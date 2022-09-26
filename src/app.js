@@ -6,6 +6,15 @@ console.log('app.js is running')
 // var userAge=21;
 // var userLocation='India';
 var app={title:"This is the title", subtitle:"This is the subtitle"};
+var user={name:"sneha",age:22,location:"India"};
+var template=(<div><h1>Name:{user.name}</h1><p>Age:{user.age}</p><p>location:{getLocation(user.location)}</p></div>);
 var templateTwo=(<div><h1>Title:{app.title}</h1><p>Subtitle:{app.subtitle}</p></div>);
 var appRoot=document.getElementById('app')
-ReactDOM.render(templateTwo,appRoot);
+ReactDOM.render(template,appRoot);
+
+function getLocation(location)
+{
+    if (location)
+    return location
+    else return 'unknown'
+}
