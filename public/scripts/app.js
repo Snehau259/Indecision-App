@@ -2,11 +2,11 @@
 
 //contains jsx
 console.log('app.js is running');
-// var template= <p>This is template from app.js</p>
-// var template = (<div><p> This is template from app.js</p> <h1> hello</h1><p>okbie</p> </div>);
-// var userName='Sneha U';
-// var userAge=21;
-// var userLocation='India';
+// const template= <p>This is template from app.js</p>
+// const template = (<div><p> This is template from app.js</p> <h1> hello</h1><p>okbie</p> </div>);
+// const userName='Sneha U';
+// const userAge=21;
+// const userLocation='India';
 var app = { title: "This is the title", subtitle: "This is the subtitle", options: ["one", "two", "three"] };
 var user = { name: "sneha", age: 22, location: "India" };
 var template = React.createElement(
