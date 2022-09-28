@@ -1,61 +1,26 @@
-"use strict";
+'use strict';
 
-//contains jsx
-console.log('app.js is running');
-// const template= <p>This is template from app.js</p>
-// const template = (<div><p> This is template from app.js</p> <h1> hello</h1><p>okbie</p> </div>);
-// const userName='Sneha U';
-// const userAge=21;
-// const userLocation='India';
-var app = { title: "This is the title", subtitle: "This is the subtitle", options: ["one", "two", "three"] };
-var user = { name: "sneha", age: 22, location: "India" };
-var template = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        "Name:",
-        user.name ? user.name : "anonymus"
-    ),
-    user.age >= 18 && React.createElement(
-        "p",
-        null,
-        "Age:",
-        user.age
-    ),
-    getLocation(user.location)
-);
-var templateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        "Title:",
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        "p",
-        null,
-        "Subtitle:",
-        app.subtitle
-    ),
-    React.createElement(
-        "p",
-        null,
-        app.options.length > 0 ? 'Here are your options' : 'No options'
-    )
-);
-var appRoot = document.getElementById('app');
-ReactDOM.render(templateTwo, appRoot);
+var square = function square(x) {
+  return x * x;
+};
+console.log(square(8));
 
-function getLocation(location) {
-    if (location) return React.createElement(
-        "p",
-        null,
-        "location:",
-        location
-    );
-    // else return 'unknown'
-}
+var squareArrow = function squareArrow(x) {
+  return x * x;
+};
+console.log(squareArrow(9));
+
+var squareArrowPrecise = function squareArrowPrecise(x) {
+  return x * x;
+};
+console.log(squareArrowPrecise(10));
+
+var getFirstName = function getFirstName(fullname) {
+  return fullname.split(' ')[0];
+};
+console.log(getFirstName("Sneha U"));
+
+var getFirstName2 = function getFirstName2(fullname) {
+  fullname.split(' ')[0];
+};
+console.log(getFirstName("Sneha U"));
