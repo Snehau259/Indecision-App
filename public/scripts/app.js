@@ -1,55 +1,78 @@
-'use strict';
+"use strict";
 
-//contains jsx
-console.log('app.js is running');
+var app = { title: "Indecision App", subtitle: "Put your life in the hands of a computer", options: ["one", "two", "three"] };
+// const templateTwo=(<div>
+//     <h1></h1>
+//     <p></p>
+//     </div>);
+var onFormSubmit = function onFormSubmit(e) {
+  e.preventDefault();
 
-var count = 0;
-var addOne = function addOne() {
-    count++;
-    console.log('added one', count);
-    renderCounterApp();
+  /* The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+   For example, this can be useful when:
+  
+  Clicking on a "Submit" button, prevent it from submitting a form
+  Clicking on a link, prevent the link from following the URL
+  
+  in this case we need no data to be added to the url
+  */
+  var formInput = e.target.option.value;
+  if (formInput) {
+    app.options.push(formInput);
+    e.target.option.value = '';
+  }
+  console.log('form submitted');
+  renderForm();
 };
-var minusOne = function minusOne() {
-    count--;
-    console.log('subtracted one');
-    renderCounterApp();
-};
-var reset = function reset() {
-    count = 0;
-    console.log('reset');
-    renderCounterApp();
+var removeAll = function removeAll() {
+  app.options = [];
+  renderForm();
 };
 
-// console.log(templateTwo)
-var appRoot = document.getElementById('app');
-
-function renderCounterApp() {
-    var templateTwo = React.createElement(
-        'div',
+function renderForm() {
+  var templateTwo = React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "h1",
+      null,
+      "Title:",
+      app.title
+    ),
+    app.subtitle && React.createElement(
+      "p",
+      null,
+      "Subtitle:",
+      app.subtitle
+    ),
+    React.createElement(
+      "button",
+      { onClick: removeAll },
+      "Remove all"
+    ),
+    React.createElement(
+      "p",
+      null,
+      app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+      "p",
+      null,
+      app.options.length
+    ),
+    React.createElement(
+      "form",
+      { onSubmit: onFormSubmit },
+      React.createElement("input", { type: "text", name: "option" }),
+      React.createElement(
+        "button",
         null,
-        React.createElement(
-            'h1',
-            null,
-            'Count:',
-            count
-        ),
-        React.createElement(
-            'button',
-            { id: 'my-id', className: 'button', onClick: addOne },
-            '+1'
-        ),
-        React.createElement(
-            'button',
-            { onClick: minusOne },
-            '-1'
-        ),
-        React.createElement(
-            'button',
-            { onClick: reset },
-            'reset'
-        )
-    );
-    ReactDOM.render(templateTwo, appRoot);
+        "Add option"
+      )
+    )
+  );
+  ReactDOM.render(templateTwo, appRoot);
 }
 
-renderCounterApp();
+var appRoot = document.getElementById('app');
+renderForm();
