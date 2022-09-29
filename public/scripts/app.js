@@ -1,6 +1,6 @@
 "use strict";
 
-var app = { title: "Indecision App", subtitle: "Put your life in the hands of a computer", options: ["one", "two", "three"] };
+var app = { title: "Indecision App", subtitle: "Put your life in the hands of a computer", options: [] };
 // const templateTwo=(<div>
 //     <h1></h1>
 //     <p></p>
@@ -24,6 +24,7 @@ var onFormSubmit = function onFormSubmit(e) {
   console.log('form submitted');
   renderForm();
 };
+//const numbers=[1,2,3,4,5]
 var removeAll = function removeAll() {
   app.options = [];
   renderForm();
@@ -55,11 +56,13 @@ function renderForm() {
       null,
       app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
-    React.createElement(
-      "p",
-      null,
-      app.options.length
-    ),
+    app.options.map(function (item) {
+      return React.createElement(
+        "p",
+        { key: item },
+        item
+      );
+    }),
     React.createElement(
       "form",
       { onSubmit: onFormSubmit },
