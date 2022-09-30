@@ -32,6 +32,9 @@ const removeAll=()=>{
     app.options=[];
     renderForm();
 }
+const makeDecision=()=>{
+    const randNum=Math.floor(Math.random()*app.options.length);
+alert(app.options[randNum]); }
 
 function renderForm()
 {
@@ -39,9 +42,10 @@ function renderForm()
  {app.subtitle && <p>Subtitle:{app.subtitle}</p>}
  <button onClick={removeAll}>Remove all</button>
  <p>{app.options.length>0? 'Here are your options' : 'No options'}</p>
+ <button disabled={app.options.length===0} onClick={makeDecision} >What should i do?</button>
  {
     app.options.map((item)=>
-    {return <p key={item}>{item}</p>}
+    {return <li key={item}>{item}</li>}
     )
  }
 
