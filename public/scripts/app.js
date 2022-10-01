@@ -51,12 +51,23 @@ var Options = function (_React$Component2) {
     }
 
     _createClass(Options, [{
+        key: 'removeAll',
+        value: function removeAll() {
+            // this.props.option=[]
+            alert('removed all');
+        }
+    }, {
         key: 'render',
         value: function render() {
             console.log(this.props);
             return React.createElement(
                 'div',
                 null,
+                React.createElement(
+                    'button',
+                    { onClick: this.removeAll },
+                    'Remove All'
+                ),
                 React.createElement(
                     'h1',
                     null,
@@ -92,6 +103,11 @@ var Action = function (_React$Component3) {
     }
 
     _createClass(Action, [{
+        key: 'handlePick',
+        value: function handlePick() {
+            return alert('handle pick');
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -99,7 +115,7 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     'button',
-                    null,
+                    { onClick: this.handlePick },
                     'What should i do'
                 )
             );
@@ -119,12 +135,32 @@ var AddOption = function (_React$Component4) {
     }
 
     _createClass(AddOption, [{
+        key: 'handleAddOption',
+        value: function handleAddOption(e) {
+            e.preventDefault();
+            var formInp = e.target.elements.formName.value.trim();
+            console.log('e', formInp);
+
+            // this.props.option.push(e.target.elements.formName.value)
+            if (formInp) alert(formInp);
+            // e.target.elements.formName.value = ''
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
-                'Add option component here'
+                React.createElement(
+                    'form',
+                    { onSubmit: this.handleAddOption },
+                    React.createElement('input', { type: 'text', name: 'formName' }),
+                    React.createElement(
+                        'button',
+                        null,
+                        'Add option'
+                    )
+                )
             );
         }
     }]);
@@ -151,7 +187,7 @@ var IndecisionApp = function (_React$Component5) {
                 'div',
                 null,
                 React.createElement(Header, { title: title, subtitle: subtitle }),
-                React.createElement(Action, null),
+                React.createElement(Action, { option: options }),
                 React.createElement(Options, { option: options }),
                 React.createElement(AddOption, null)
             );
@@ -176,6 +212,7 @@ var Option = function (_React$Component6) {
             return React.createElement(
                 'div',
                 null,
+                'Option: ',
                 this.props.optionText
             );
         }
@@ -184,12 +221,12 @@ var Option = function (_React$Component6) {
     return Option;
 }(React.Component);
 
-// const updateOptions=()=>
+// const handleAddOption=()=>
 // {
 //     options.push()
 // }
 // let options=[]
-// <form onSubmit={updateOptions(e.tar)}><input type='text'></input>
+// <form onSubmit={handleAddOption(e.tar)}><input type='text'></input>
 //         <button>Add option</button>   
 //             </form>
 // <p>{options.length==0?'No options':'Here are your options'}</p>
