@@ -44,17 +44,20 @@ var Header = function (_React$Component) {
 var Options = function (_React$Component2) {
     _inherits(Options, _React$Component2);
 
-    function Options() {
+    function Options(props) {
         _classCallCheck(this, Options);
 
-        return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+        var _this2 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+        _this2.removeAll = _this2.removeAll.bind(_this2);
+        return _this2;
     }
 
     _createClass(Options, [{
         key: 'removeAll',
         value: function removeAll() {
             // this.props.option=[]
-            alert('removed all');
+            console.log(this.props.option);
         }
     }, {
         key: 'render',
@@ -140,7 +143,7 @@ var AddOption = function (_React$Component4) {
             e.preventDefault();
             var formInp = e.target.elements.formName.value.trim();
             console.log('e', formInp);
-
+            //    const test=this.props.option;
             // this.props.option.push(e.target.elements.formName.value)
             if (formInp) alert(formInp);
             // e.target.elements.formName.value = ''
@@ -153,7 +156,7 @@ var AddOption = function (_React$Component4) {
                 null,
                 React.createElement(
                     'form',
-                    { onSubmit: this.handleAddOption },
+                    { onSubmit: this.handleAddOption.bind(this) },
                     React.createElement('input', { type: 'text', name: 'formName' }),
                     React.createElement(
                         'button',

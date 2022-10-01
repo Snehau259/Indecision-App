@@ -11,9 +11,13 @@ class Header extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props)
+    {super(props)
+        this.removeAll=this.removeAll.bind(this)
+    }
     removeAll() {
         // this.props.option=[]
-        alert('removed all')
+        console.log(this.props.option)
     }
     render() {
         console.log(this.props)
@@ -54,7 +58,7 @@ class AddOption extends React.Component {
         e.preventDefault();
         const formInp = e.target.elements.formName.value.trim()
         console.log('e', formInp)
-       
+    //    const test=this.props.option;
         // this.props.option.push(e.target.elements.formName.value)
         if(formInp)
         alert(formInp)
@@ -63,7 +67,7 @@ class AddOption extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleAddOption}>
+                <form onSubmit={this.handleAddOption.bind(this)}>
                     <input type='text' name='formName'></input>
                     <button>Add option</button>
                 </form>
