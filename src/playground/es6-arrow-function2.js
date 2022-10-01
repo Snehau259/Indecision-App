@@ -1,15 +1,16 @@
-const add=function(a,b)
-{console.log(arguments);//Arguments(2) [2, 3, callee: (...), Symbol(Symbol.iterator): ƒ]
-    return a+b;
+const add = function (a, b) {
+    console.log(arguments);//Arguments(2) [2, 3, callee: (...), Symbol(Symbol.iterator): ƒ]
+    return a + b;
 }
-console.log(add(2,3))
+console.log(add(2, 3))
 
 //ARGUEMENTS OBJECT NO LONGER BOUND WITH ARROW FUNCTIONS
-const addArrow=(a,b)=>
+const addArrow = (a, b) =>
 // {console.log(arguments);app.js:3 Uncaught ReferenceError: arguments is not defined
-    {return a+b;
+{
+    return a + b;
 }
-console.log(add(2,3))
+console.log(add(2, 3))
 
 //THIS KEYWORD NO LONGER BOUND
 
@@ -29,40 +30,37 @@ printPlacesLived:function()
 user.printPlacesLived(); */
 
 
-const user={name:"Sneha",
-cities:["palakkad","kochi","kanhangad"],
-printPlacesLived:function()
-{
-   
+const user = {
+    name: "Sneha",
+    cities: ["palakkad", "kochi", "kanhangad"],
+    printPlacesLived: function () {
 
-    this.cities.forEach((city)=>
-    {
-        console.log(this.name+" has lived in "+ city)
-    });
-}}
+
+        this.cities.forEach((city) => {
+            console.log(this.name + " has lived in " + city)
+        });
+    }
+}
 user.printPlacesLived();
 
-const userMap={
-    name:"Sneha",
-cities:["palakkad","kochi","kanhangad"],
-printPlacesLived()
-{
-   
+const userMap = {
+    name: "Sneha",
+    cities: ["palakkad", "kochi", "kanhangad"],
+    printPlacesLived() {
 
-   return this.cities.map((city)=>
-    {
-        return (this.name+" has lived in "+ city);
-    });
-}
+
+        return this.cities.map((city) => {
+            return (this.name + " has lived in " + city);
+        });
+    }
 };
 console.log(userMap.printPlacesLived());
 
-const multiplier={
-    numbers:[1,2,3,4,5],
-    multiplyBy:10,
-    multiply()
-    {
-        return this.numbers.map((num)=>num*this.multiplyBy)
+const multiplier = {
+    numbers: [1, 2, 3, 4, 5],
+    multiplyBy: 10,
+    multiply() {
+        return this.numbers.map((num) => num * this.multiplyBy)
     }
 }
 console.log(multiplier.multiply());

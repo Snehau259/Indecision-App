@@ -1,15 +1,15 @@
-var nameVar='Sneha';
-var nameVar='Sruthi';
-console.log('nameVar',nameVar)// redefining and reassigning is possible
+var nameVar = 'Sneha';
+var nameVar = 'Sruthi';
+console.log('nameVar', nameVar)// redefining and reassigning is possible
 
 
-let nameLet='Sneha';
-nameLet='Sruthi';
-console.log('nameLet',nameLet)//reassigning is possible but redefining is not
+let nameLet = 'Sneha';
+nameLet = 'Sruthi';
+console.log('nameLet', nameLet)//reassigning is possible but redefining is not
 
-const nameConst='Sneha';
+const nameConst = 'Sneha';
 // nameConst='Sruthi';
-console.log('nameConst',nameConst)//reassigning is possible but redefining is not
+console.log('nameConst', nameConst)//reassigning is possible but redefining is not
 
 // SCOPES
 /* function getPetName()
@@ -18,7 +18,7 @@ console.log('nameConst',nameConst)//reassigning is possible but redefining is no
     return petName;
 }
 getPetName();
-console.log(petName) Uncaught ReferenceError: petName is not defined  */ 
+console.log(petName) Uncaught ReferenceError: petName is not defined  */
 
 /* function getPetName()
 {
@@ -26,11 +26,11 @@ console.log(petName) Uncaught ReferenceError: petName is not defined  */
     return petName;
 }
 getPetName();
-console.log(petName) //Uncaught ReferenceError: petName is not defined  */ 
+console.log(petName) //Uncaught ReferenceError: petName is not defined  */
 
 // LET AND CONST ARE BLOCK SCOPED WHICH DOES INCLUDE FUNCTIONS->CANNOT ACCESS OUTSIDE BLOCK
 
-var fullName='Sneha u'
+var fullName = 'Sneha u'
 /* if (fullName)
 {
     let firstName=fullName.split()[0];
@@ -45,9 +45,8 @@ console.log('firstName outside block',firstName) //Uncaught ReferenceError: firs
 }
 console.log('firstName outside block',firstName)//Uncaught ReferenceError: firstName is not defined */
 
-if (fullName)
-{
-    let firstName=fullName.split()[0];
-    console.log('firstName inside block',firstName)
+if (fullName) {
+    let firstName = fullName.split()[0];
+    console.log('firstName inside block', firstName)
 }
-console.log('firstName outside block',firstName)
+console.log('firstName outside block', firstName)

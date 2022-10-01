@@ -1,23 +1,25 @@
-let visibility=false;
-const showDetails=()=>{console.log('clicked')
-visibility=!visibility;
+let visibility = false;
+const showDetails = () => {
+    console.log('clicked')
+    visibility = !visibility;
 
     // return <p>here are the details</p>
     // ReactDOM.render(template, appRoot);
-renderPage();}
-    
+    renderPage();
+}
 
 
 
 
 
-const renderPage=()=>{
-    const template=(<div>
+
+const renderPage = () => {
+    const template = (<div>
         <h1>Visibility Toggle</h1>
-        <button onClick={showDetails}>{visibility?'hide details':'show details'}</button>
+        <button onClick={showDetails}>{visibility ? 'hide details' : 'show details'}</button>
         {visibility && (<div><p>here are your details</p></div>)}
-        </div>)
-        ReactDOM.render(template, appRoot);
+    </div>)
+    ReactDOM.render(template, appRoot);
 }
 
 
