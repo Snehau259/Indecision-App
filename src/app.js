@@ -6,6 +6,18 @@ class Header extends React.Component
     }
     }
 
+    class Options extends  React.Component
+    {
+        render()
+        {
+            return (
+                <div> 
+                <p>options component here</p>
+                <Option/>
+                </div>)
+        }
+    }
+
 class Action extends  React.Component
 {
     render()
@@ -14,15 +26,7 @@ class Action extends  React.Component
     }
 }
 
-class Option extends  React.Component
-{
-    render()
-    {
-        return (<div>
-           options component here
-            </div>)
-    }
-}
+
 
 class AddOption extends  React.Component
 {
@@ -34,6 +38,25 @@ class AddOption extends  React.Component
             </div>)
     }
 }
+class IndecisionApp extends React.Component
+{
+    render()
+    {
+    return (<div><Header/><Action/><Options/><AddOption/></div>)
+    }
+    }
+
+    class Option extends  React.Component
+    {
+        render()
+        {
+            return (<div>
+               option component here
+                </div>)
+        }
+    }
+
+
 
 // const updateOptions=()=>
 // {
@@ -44,6 +67,6 @@ class AddOption extends  React.Component
 //         <button>Add option</button>   
 //             </form>
 // <p>{options.length==0?'No options':'Here are your options'}</p>
-const jsx=(<div><Header/><Action/><Option/><AddOption/></div>);
-ReactDOM.render(jsx,document.getElementById('app'))
+// const jsx=();
+ReactDOM.render(<IndecisionApp/>,document.getElementById('app'))
 
