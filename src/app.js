@@ -11,19 +11,19 @@ class Header extends React.Component {
 }
 
 class Options extends React.Component {
-    constructor(props)
-    {super(props)
-        this.removeAll=this.removeAll.bind(this)
+    constructor(props) {
+        super(props)
+        // this.removeAll = this.removeAll.bind(this)
     }
-    removeAll() {
-        // this.props.option=[]
-        console.log(this.props.option)
-    }
+    // removeAll() {
+    //     // this.props.option=[]
+    //     console.log(this.props.option)
+    // }
     render() {
         console.log(this.props)
         return (
             <div>
-                <button onClick={this.removeAll}>Remove All</button>
+                <button onClick={this.props.handleDeleteOptions}>Remove All</button>
                 <h1>{this.props.option.length}</h1>
                 {this.props.option.map((item) =>
                     <Option key={item} optionText={item}>{item}</Option>
@@ -40,12 +40,12 @@ class Options extends React.Component {
 }
 
 class Action extends React.Component {
-    handlePick() { return alert('handle pick') }
+    // handlePick() { return alert('handle pick') }
 
     render() {
         return (
             <div>
-                <button onClick={this.handlePick}>What should i do</button>
+                <button onClick={this.props.handlePick} disabled={!this.props.hasOption}>What should i do</button>
 
             </div>)
     }
@@ -58,10 +58,10 @@ class AddOption extends React.Component {
         e.preventDefault();
         const formInp = e.target.elements.formName.value.trim()
         console.log('e', formInp)
-    //    const test=this.props.option;
+        //    const test=this.props.option;
         // this.props.option.push(e.target.elements.formName.value)
-        if(formInp)
-        alert(formInp)
+        if (formInp)
+            alert(formInp)
         // e.target.elements.formName.value = ''
     }
     render() {
@@ -77,15 +77,33 @@ class AddOption extends React.Component {
     }
 }
 class IndecisionApp extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { options: ['thing one', 'thing two', 'thing three'] }
+        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.handlePick = this.handlePick.bind(this);
+    }
+    handleDeleteOptions() {
+        this.setState(() => {
+            return {
+                options: []
+            }
+        })
+    }
+    handlePick(){
+        const randNum=Math.floor(Math.random() * this.state.options.length);
+        console.log(randNum)
+        alert(this.state.options[randNum])
+    }
     render() {
         const title = 'Indecision App'
         const subtitle = 'Put your lives in the hands of a computer'
-        const options = ['thing one', 'thing two', 'thing four']
+        // const options = ['thing one', 'thing two', 'thing four']
         return (
             <div>
                 <Header title={title} subtitle={subtitle} />
-                <Action option={options} />
-                <Options option={options} />
+                <Action hasOption={this.state.options.length > 0} handlePick={this.handlePick}/>
+                <Options option={this.state.options} handleDeleteOptions={this.handleDeleteOptions} />
                 <AddOption />
             </div>)
     }
