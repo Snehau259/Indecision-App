@@ -90,8 +90,8 @@ class IndecisionApp extends React.Component {
             }
         })
     }
-    handlePick(){
-        const randNum=Math.floor(Math.random() * this.state.options.length);
+    handlePick() {
+        const randNum = Math.floor(Math.random() * this.state.options.length);
         console.log(randNum)
         alert(this.state.options[randNum])
     }
@@ -102,7 +102,7 @@ class IndecisionApp extends React.Component {
         return (
             <div>
                 <Header title={title} subtitle={subtitle} />
-                <Action hasOption={this.state.options.length > 0} handlePick={this.handlePick}/>
+                <Action hasOption={this.state.options.length > 0} handlePick={this.handlePick} />
                 <Options option={this.state.options} handleDeleteOptions={this.handleDeleteOptions} />
                 <AddOption />
             </div>)
